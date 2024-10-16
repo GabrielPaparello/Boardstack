@@ -22,7 +22,7 @@ export const CardDesktop = () => {
           autoplay
           speed={0.5}
           src="/lottie/animation_3.json"
-          className="w-18 h-auto"
+          className="w-18 h-auto lg:w-24 xl:w-32"
         />
       </motion.div>
       <motion.div
@@ -41,7 +41,7 @@ export const CardDesktop = () => {
           autoplay
           speed={0.5}
           src="/lottie/animation_2.json"
-          className="w-18 h-auto"
+          className="w-18 h-auto lg:w-24 xl:w-32"
         />
       </motion.div>
       <motion.div
@@ -60,7 +60,7 @@ export const CardDesktop = () => {
           autoplay
           speed={0.5}
           src="/lottie/animation_1.json"
-          className="w-18 h-auto stroke-black dark:stroke-white fill-black dark:fill-white"
+          className="w-18 h-auto stroke-black lg:w-24 xl:w-32 dark:stroke-white fill-black dark:fill-white"
         />
       </motion.div>
     </div>
