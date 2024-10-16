@@ -6,7 +6,7 @@ import { CardDesktop } from "./CardDesktop";
 
 export const Hero = () => {
   return (
-    <section className="absolute top-[15%] left-1/2 -translate-x-1/2 z-5 flex flex-col items-center justify-center dark:bg-dark-primary bg-light-primary">
+    <section className="relative text-center  xs:mt-28 md:mt-10 md:top-[15%] left-1/2 -translate-x-1/2 z-5 flex flex-col items-center justify-center dark:bg-dark-primary bg-light-primary">
       <article className="flex flex-col items-center justify-center gap-3 md:mt-10">
         <h1 className={`font-bold text-lg md:text-3xl ${urbanist} text-nowrap`}>
           <span

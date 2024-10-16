@@ -3,7 +3,7 @@ import { props } from "@/ui/types/nav/hamburger.types";
 import React from "react";
 
 export const Hamburger = ({ isOpen, setIsOpen }: props) => {
-  const genericHamburgerLine = `h-1  w-6 my-1 rounded-full bg-black dark:bg-light-primary transition ease transform duration-300`;
+  const genericHamburgerLine = `h-1  w-6 my-1  rounded-full bg-black dark:bg-light-primary transition ease transform duration-300`;
 
   return (
     <div className="md:hidden fixed z-10">
