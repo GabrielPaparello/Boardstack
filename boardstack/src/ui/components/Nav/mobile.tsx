@@ -3,11 +3,11 @@ import { urbanist } from "../common/fonts";
 import { props } from "@/ui/types/nav/hamburger.types";
 export const Mobile = ({ isOpen }: props) => {
   return (
-    <section className="md:hidden">
+    <section className="md:hidden fixed ">
       <motion.div
         animate={{
           x: !isOpen ? -100 : 0,
-          y: 10,
+          y: 50,
         }}
       >
         <nav

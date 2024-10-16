@@ -6,7 +6,7 @@ export const Hamburger = ({ isOpen, setIsOpen }: props) => {
   const genericHamburgerLine = `h-1  w-6 my-1 rounded-full bg-black dark:bg-light-primary transition ease transform duration-300`;
 
   return (
-    <div className="md:hidden">
+    <div className="md:hidden fixed z-10">
       <button
         className="flex flex-col h-12 w-12  rounded justify-center items-center group "
         onClick={() => setIsOpen(!isOpen)}
