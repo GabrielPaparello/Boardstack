@@ -45,6 +45,7 @@ const config: Config = {
           secondary: "#F7F7F7",
           tertiary: "#FFFFFF",
           body: "#555555",
+          sub_body: "#6D7275",
           title: "#1A1A1A",
           subtle: "#A0A0A0",
           accent: {
