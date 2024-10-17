@@ -59,7 +59,7 @@ const config: Config = {
       },
       backgroundImage: {
         "light-background":
-          "url('https://www.transparenttextures.com/patterns/otis-redding.png')", // Fondo para modo claro
+          "url('https://www.transparenttextures.com/patterns/squared-metal.png')", // Fondo para modo claro
         "dark-background":
           "url('https://www.transparenttextures.com/patterns/otis-redding.png')",
       },
