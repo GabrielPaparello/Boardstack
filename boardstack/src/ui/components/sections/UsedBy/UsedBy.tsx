@@ -6,7 +6,7 @@ export const UsedBy = () => {
     <section className="mt-10 flex flex-col items-center justify-center dark:bg-dark-secondary bg-light-secondary py-5">
       <article>
         <h3
-          className={`text-center ${urbanist} font-bold dark:text-dark-title text-light-title`}
+          className={`text-center ${urbanist} font-bold dark:text-dark-title text-light-title md:text-xl lg:text-2xl`}
         >
           Industrias que utilizan Kanban
         </h3>
@@ -33,21 +33,15 @@ export const UsedBy = () => {
           width={50}
           height={200}
           alt="instagram logo"
-          className="fill-light-accent-secondary dark:fill-dark-accent-secondary stroke-light-accent-secondary dark:stroke-dark-accent-secondary md:min-w-[80px] lg:min-w-[100px]"
+          className="fill-light-accent-secondary dark:fill-dark-accent-secondary stroke-light-accent-secondary dark:stroke-dark-accent-secondary md:min-w-[100px] lg:min-w-[140px]"
         />
-        <Image
-          src="/netflix-icon.svg"
-          width={50}
-          height={200}
-          alt="netflix logo"
-          className="fill-light-accent-secondary dark:fill-dark-accent-secondary stroke-light-accent-secondary dark:stroke-dark-accent-secondary md:min-w-[80px] lg:min-w-[100px]"
-        />
+
         <Image
           src="/spotify-icon.svg"
           width={50}
           height={200}
           alt="spotify logo"
-          className="fill-light-accent-secondary dark:fill-dark-accent-secondary stroke-light-accent-secondary dark:stroke-dark-accent-secondary md:min-w-[80px] lg:min-w-[100px]"
+          className="fill-light-accent-secondary dark:fill-dark-accent-secondary stroke-light-accent-secondary dark:stroke-dark-accent-secondary md:min-w-[100px] lg:min-w-[140px]"
         />
       </article>
     </section>
