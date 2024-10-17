@@ -37,7 +37,7 @@ export const Card = ({ data }: { data: data }) => {
             ))}
           </article>
         </article>
-        <article>
+        <article className="flex flex-col">
           <QuotesIcon className="dark:fill-dark-accent-tertiary fill-light-accent-primary" />
           <p
             className={`${roboto.className} text-wrap dark:text-dark-body text-light-body`}
