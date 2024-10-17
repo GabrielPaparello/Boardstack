@@ -1,42 +1,50 @@
-import Image from "next/image";
-import { urbanist } from "../../common/fonts";
+import { roboto, urbanist } from "../../common/fonts";
+import StarIcon from "./StarIcon";
+import QuotesIcon from "./Quotes";
+import { data } from "@/ui/types/testimonials.types";
 
-export const Card = () => {
+const totalStars = new Array(5).fill(null);
+
+export const Card = ({ data }: { data: data }) => {
   return (
     <>
-      <section className="dark:bg-dark-quaternary bg-light-secondary">
+      <section
+        className={`dark:bg-dark-quaternary bg-light-secondary flex flex-col gap-5 p-5 max-w-[300px] text-nowrap `}
+      >
         <article className="flex justify-around items-center ">
-          <h3
-            className={`${urbanist} font-semibold dark:text-dark-title text-light-title`}
-          >
-            John Doe
-          </h3>
-          <Image
-            src="/testimonials/star.svg"
-            width={25}
-            height={25}
-            alt="valoration star icon"
-          />
+          <section className="flex flex-col">
+            <h3
+              className={`${urbanist.className} font-semibold dark:text-dark-title text-light-title`}
+            >
+              {data.userName}
+            </h3>
+            <h3
+              className={`${roboto.className} dark:text-dark-subtle text-light-subtle`}
+            >
+              {data.role}
+            </h3>
+          </section>
+          <article className="flex gap-1 xs:mx-3">
+            {totalStars.map((_, index) => (
+              <StarIcon
+                key={`star-${index + 1}`}
+                className={`${
+                  data.rating <= index
+                    ? "fill-dark-subtle/80"
+                    : "fill-dark-accent-quaternary"
+                }`}
+              />
+            ))}
+          </article>
         </article>
-        <h3>Product Manager</h3>
         <article>
-          <Image
-            src={"/testimonials/quotations.svg"}
-            alt={"quotations mark icon"}
-            width={50}
-            height={50}
-          />
-          <p>
-            Desde que empezamos a usar esta aplicación nuestro equipo ha logrado
-            reducir el tiempo de entrega en un 30%. La visualización clara de
-            las tareas nos ha permitido enfocarnos en lo que realmente importa.
+          <QuotesIcon className="dark:fill-dark-accent-tertiary fill-light-accent-primary" />
+          <p
+            className={`${roboto.className} text-wrap dark:text-dark-body text-light-body`}
+          >
+            {data.review}
           </p>
-          <Image
-            src={"/testimonials/quotations.svg"}
-            alt={"quotations mark icon"}
-            width={50}
-            height={50}
-          />
+          <QuotesIcon className="dark:fill-dark-accent-tertiary fill-light-accent-primary" />
         </article>
       </section>
     </>

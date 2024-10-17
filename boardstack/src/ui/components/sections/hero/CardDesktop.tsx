@@ -13,7 +13,7 @@ export const CardDesktop = () => {
         transition={{ duration: 0.8 }}
       >
         <h3
-          className={`text-center ${roboto} font-semibold dark:text-dark-body text-light-body `}
+          className={`text-center ${roboto.className} font-semibold dark:text-dark-body text-light-body `}
         >
           Visualizá tus Tareas
         </h3>
@@ -32,7 +32,7 @@ export const CardDesktop = () => {
         transition={{ duration: 0.8, delay: 4 }}
       >
         <h3
-          className={`text-center ${roboto} font-semibold dark:text-dark-body text-light-body `}
+          className={`text-center ${roboto.className} font-semibold dark:text-dark-body text-light-body `}
         >
           Prioriza y Organizá
         </h3>
@@ -51,7 +51,7 @@ export const CardDesktop = () => {
         transition={{ duration: 0.8, delay: 2 }}
       >
         <h3
-          className={`text-center ${roboto} font-semibold dark:text-dark-body text-light-body `}
+          className={`text-center ${roboto.className} font-semibold dark:text-dark-body text-light-body `}
         >
           Colabora y Comparti
         </h3>
