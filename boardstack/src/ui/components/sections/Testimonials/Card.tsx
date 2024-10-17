@@ -9,17 +9,17 @@ export const Card = ({ data }: { data: data }) => {
   return (
     <>
       <section
-        className={`dark:bg-dark-quaternary bg-light-secondary flex flex-col gap-5 p-5 max-w-[300px] text-nowrap `}
+        className={`dark:bg-dark-quaternary  relative bg-light-secondary flex flex-col gap-5  p-5 max-w-[300px] text-nowrap rounded-[33px] shadow-md shadow-black `}
       >
         <article className="flex justify-around items-center ">
           <section className="flex flex-col">
             <h3
-              className={`${urbanist.className} font-semibold dark:text-dark-title text-light-title`}
+              className={`${urbanist.className} font-semibold dark:text-dark-title text-light-title lg:text-xl`}
             >
               {data.userName}
             </h3>
             <h3
-              className={`${roboto.className} dark:text-dark-subtle text-light-subtle`}
+              className={`${roboto.className} dark:text-dark-subtle text-light-subtle font-light lg:text-base`}
             >
               {data.role}
             </h3>
@@ -44,7 +44,7 @@ export const Card = ({ data }: { data: data }) => {
           >
             {data.review}
           </p>
-          <QuotesIcon className="dark:fill-dark-accent-tertiary fill-light-accent-primary" />
+          <QuotesIcon className="dark:fill-dark-accent-tertiary fill-light-accent-primary self-end place-self-end" />
         </article>
       </section>
     </>
