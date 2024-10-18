@@ -1,50 +1,48 @@
 "use client";
 import { Player } from "@lottiefiles/react-lottie-player";
 import { motion } from "framer-motion";
+import { roboto } from "../../common/fonts";
 
-export const CardMobile = () => {
+export const Card = () => {
   return (
-    <div className="flex flex-col items-center justify-center mt-16 gap-8">
+    <div className="mt-16 flex flex-col md:flex-row justify-center items-center  gap-10 ">
       <motion.div
-        className="dark:bg-dark-tertiary/80 bg-light-tertiary/50 rounded-2xl w-fit flex items-center justify-center "
-        initial={{ opacity: 0, scale: 0.5 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 0.8 }}
+        className="bg-white/30 backdrop-blur-md border border-white/20 rounded-lg p-3 md:p-6 max-w-44 md:max-w-72 lg:max-w-[500px] shadow-lg "
+        initial={{ x: -100, opacity: 0 }}
+        animate={{ x: 0, opacity: 1 }}
+        transition={{ duration: 0.5, type: "tween", delay: 1 }}
       >
+        <h3
+          className={`text-center ${roboto.className} font-semibold dark:text-dark-body text-light-body `}
+        >
+          Prioriza y Organizá
+        </h3>
         <Player
           loop
           autoplay
-          speed={0.5}
-          src="/lottie/animation_3.json"
-          className="w-50 h-auto"
+          speed={1}
+          src="/lottie/kanbanAnim.json"
+          className="w-18 h-auto "
         />
       </motion.div>
+
       <motion.div
-        className="dark:bg-dark-tertiary/80 bg-light-tertiary rounded-2xl w-fit flex items-center justify-center "
-        initial={{ opacity: 0, scale: 0.5 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 0.8, delay: 1.5 }}
+        className="bg-white/30 backdrop-blur-md border border-white/20 rounded-lg p-3 md:p-6 max-w-44 md:max-w-72 lg:max-w-[500px] shadow-lg "
+        initial={{ x: -200, opacity: 0 }}
+        animate={{ x: 0, opacity: 1 }}
+        transition={{ duration: 0.5, type: "tween", delay: 1.5 }}
       >
+        <h3
+          className={`text-center ${roboto.className} font-semibold dark:text-dark-body text-light-body `}
+        >
+          Colabora y Comparti
+        </h3>
         <Player
           loop
           autoplay
           speed={0.5}
-          src="/lottie/animation_2.json"
-          className="w-50 h-auto"
-        />
-      </motion.div>
-      <motion.div
-        className="dark:bg-dark-tertiary/80 bg-light-tertiary rounded-2xl w-fit flex items-center justify-center "
-        initial={{ opacity: 0, scale: 0.5 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 0.8, delay: 2.5 }}
-      >
-        <Player
-          loop
-          autoplay
-          speed={0.5}
-          src="/lottie/animation_1.json"
-          className="w-50 h-auto stroke-black dark:stroke-white fill-black dark:fill-white"
+          src="/lottie/sharingAnim.json"
+          className="w-18 h-auto stroke-black  dark:stroke-white fill-black dark:fill-white"
         />
       </motion.div>
     </div>
