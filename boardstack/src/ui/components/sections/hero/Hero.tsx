@@ -1,8 +1,7 @@
 import React from "react";
 import { urbanist } from "../../common/fonts";
-import { CardMobile } from "./Card";
 import Link from "next/link";
-import { CardDesktop } from "./CardDesktop";
+import { Card } from "./Card";
 
 export const Hero = () => {
   return (
@@ -30,11 +29,8 @@ export const Hero = () => {
         </h2>
       </article>
       <article className="">
-        <section className="xs:hidden md:block">
-          <CardDesktop />
-        </section>
-        <section className="md:hidden xs:block ">
-          <CardMobile />
+        <section className="">
+          <Card />
         </section>
       </article>
       <article className={`${urbanist.className}`}>
