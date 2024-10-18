@@ -7,7 +7,7 @@ export const Card = () => {
   return (
     <div className="mt-16 flex flex-col md:flex-row justify-center items-center  gap-10 ">
       <motion.div
-        className="bg-white/30 backdrop-blur-md border border-white/20 rounded-lg p-3 md:p-6 max-w-44 md:max-w-72 lg:max-w-[500px] shadow-lg "
+        className="bg-white/50 backdrop-blur-md border stroke-black  border-white/20 rounded-lg p-3 md:p-6 max-w-44 md:max-w-72 lg:max-w-[500px] shadow-lg "
         initial={{ x: -100, opacity: 0 }}
         animate={{ x: 0, opacity: 1 }}
         transition={{ duration: 0.5, type: "tween", delay: 1 }}
@@ -27,7 +27,7 @@ export const Card = () => {
       </motion.div>
 
       <motion.div
-        className="bg-white/30 backdrop-blur-md border border-white/20 rounded-lg p-3 md:p-6 max-w-44 md:max-w-72 lg:max-w-[500px] shadow-lg "
+        className="bg-white/50 backdrop-blur-md border border-white/20 rounded-lg p-3 md:p-6 max-w-44 md:max-w-72 lg:max-w-[500px] shadow-lg "
         initial={{ x: -200, opacity: 0 }}
         animate={{ x: 0, opacity: 1 }}
         transition={{ duration: 0.5, type: "tween", delay: 1.5 }}
