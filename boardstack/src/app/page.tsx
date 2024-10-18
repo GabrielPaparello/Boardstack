@@ -6,7 +6,7 @@ import { UsedBy } from "@/ui/components/sections/UsedBy/UsedBy";
 
 export default function Home() {
   return (
-    <div className="flex flex-col mx-2  ">
+    <div className="flex flex-col mx-2   ">
       <header>
         <Nav />
       </header>
