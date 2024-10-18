@@ -1,4 +1,5 @@
 import { Nav } from "@/ui/components/Nav/Nav";
+import { Blog } from "@/ui/components/sections/Blog/Blog";
 import { Hero } from "@/ui/components/sections/hero/Hero";
 import { Testimonials } from "@/ui/components/sections/Testimonials/Testimonials";
 import { Tutorial } from "@/ui/components/sections/Tutorial/Tutorial";
@@ -21,6 +22,9 @@ export default function Home() {
       </section>
       <section>
         <Tutorial />
+      </section>
+      <section>
+        <Blog />
       </section>
     </div>
   );
