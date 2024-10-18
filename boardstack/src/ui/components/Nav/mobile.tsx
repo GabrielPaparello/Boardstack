@@ -6,7 +6,7 @@ export const Mobile = ({ isOpen }: props) => {
     <section className="md:hidden fixed ">
       <motion.div
         animate={{
-          x: !isOpen ? -100 : 0,
+          x: !isOpen ? -120 : 0,
           y: 50,
         }}
       >
