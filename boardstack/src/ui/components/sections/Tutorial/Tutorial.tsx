@@ -29,8 +29,8 @@ export const Tutorial = () => (
     </article>
     <article className={`flex flex-col items-start justify-center gap-5`}>
       <Image
-        src={""}
-        alt={""}
+        src={"/placeholder.png"}
+        alt={"a placeholder img"}
         width={100}
         height={100}
         className="xs:min-w-[300px] lg:min-w-[600px] bg-white"
