@@ -27,7 +27,7 @@ export const Blog = () => {
           </p>
         </article>
         <Link
-          className={`${urbanist.className} bg-light-accent-primary text-center dark:bg-dark-accent-tertiary px-3 py-2 rounded-full text-light-title dark:text-dark-title font-bold`}
+          className={`${urbanist.className} bg-light-accent-primary text-center dark:bg-dark-accent-tertiary px-3 py-2 rounded-xl text-light-title dark:text-dark-title font-bold`}
           href={`/blog/${blogData.featured?.id}`}
         >
           Visita el post
@@ -52,7 +52,7 @@ export const Blog = () => {
                   className="shadow-2xl dark:shadow-black shadow-white lg:min-w-[300px]"
                 />
                 <h4
-                  className={`${urbanist.className}dark:text-dark-accent-quaternary text-light-accent-primary text-center`}
+                  className={`${urbanist.className} dark:text-dark-accent-quaternary text-light-accent-primary text-center`}
                 >
                   {post.title}
                 </h4>
@@ -63,7 +63,7 @@ export const Blog = () => {
                 </p>
                 <Link
                   className={`${urbanist.className} bg-light-accent-primary
-                   text-center dark:bg-dark-accent-tertiary px-3 py-2 rounded-full text-light-title dark:text-dark-title font-bold`}
+                   text-center dark:bg-dark-accent-tertiary px-3 py-2 rounded-xl text-light-title dark:text-dark-title font-bold`}
                   href={`/blog/${post.id} `}
                 >
                   Visita el post

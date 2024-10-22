@@ -1,6 +1,8 @@
 import { motion } from "framer-motion";
 import { urbanist } from "../common/fonts";
 import { props } from "@/ui/types/nav/hamburger.types";
+import { data } from "./nav.data";
+import Link from "next/link";
 export const Mobile = ({ isOpen }: props) => {
   return (
     <section className="md:hidden fixed ">
@@ -16,9 +18,14 @@ export const Mobile = ({ isOpen }: props) => {
           <ul
             className={`flex flex-col md:flex-row text-light-primary dark:text-dark-primary pt-5 gap-5 font-bold `}
           >
-            <li>HOME</li>
-            <li>LEARN</li>
-            <li>ABOUT</li>
+            {data.map((data) => (
+              <li
+                className={`hover:text-light-accent-tertiary dark:hover:text-dark-accent-tertiary`}
+                key={`${data.name}+${Math.random()}`}
+              >
+                <Link href={`${data.link}`}>{data.name}</Link>
+              </li>
+            ))}
           </ul>
         </nav>
       </motion.div>

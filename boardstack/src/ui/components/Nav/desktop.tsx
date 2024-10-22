@@ -1,5 +1,7 @@
 import React from "react";
 import { urbanist } from "../common/fonts";
+import { data } from "./nav.data";
+import Link from "next/link";
 
 export const Desktop = () => {
   return (
@@ -10,9 +12,14 @@ export const Desktop = () => {
         <ul
           className={`flex items-start justify-start text-light-primary dark:text-dark-primary px-28 gap-5 font-bold `}
         >
-          <li>HOME</li>
-          <li>LEARN</li>
-          <li>ABOUT</li>
+          {data.map((data) => (
+            <li
+              className={`hover:text-light-accent-tertiary dark:hover:text-dark-accent-tertiary`}
+              key={`${data.name}+${Math.random()}`}
+            >
+              <Link href={`${data.link}`}>{data.name}</Link>
+            </li>
+          ))}
         </ul>
       </nav>
     </section>
