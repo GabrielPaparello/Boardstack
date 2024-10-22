@@ -17,6 +17,6 @@ export const data: links[] = [
   },
   {
     name: "APP",
-    link: "/",
+    link: "/software",
   },
 ];
