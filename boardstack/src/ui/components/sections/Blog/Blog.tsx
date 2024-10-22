@@ -52,7 +52,7 @@ export const Blog = () => {
                   className="shadow-2xl dark:shadow-black shadow-white lg:min-w-[300px]"
                 />
                 <h4
-                  className={`${urbanist.className}dark:text-dark-accent-quaternary text-light-accent-primary text-center`}
+                  className={`${urbanist.className} dark:text-dark-accent-quaternary text-light-accent-primary text-center`}
                 >
                   {post.title}
                 </h4>
