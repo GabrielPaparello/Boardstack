@@ -7,54 +7,125 @@ import {
   DropResult,
 } from "react-beautiful-dnd";
 
+// Define el tipo para los elementos
+interface Item {
+  id: string;
+  content: string;
+}
+
+// Define el tipo para las columnas
+interface Columns {
+  column1: Item[];
+  column2: Item[];
+}
+
 const Software = () => {
-  const initialItems = [
-    { id: "idONE", content: "Item 1" },
-    { id: "idTWO", content: "Item 2" },
-    { id: "idTHREE", content: "Item 3" },
+  const initialItemsCol1: Item[] = [
+    { id: "1", content: "Item 1" },
+    { id: "2", content: "Item 2" },
   ];
-  const [items, setItems] = useState(initialItems);
+
+  const initialItemsCol2: Item[] = [
+    { id: "3", content: "Item 3" },
+    { id: "4", content: "Item 4" },
+  ];
+
+  const [columns, setColumns] = useState<Columns>({
+    column1: initialItemsCol1,
+    column2: initialItemsCol2,
+  });
 
   const onDragEnd = (result: DropResult) => {
-    console.log(result);
     if (!result.destination) return;
 
-    const reorderedItems = Array.from(items);
-    const [removed] = reorderedItems.splice(result.source.index, 1);
-    reorderedItems.splice(result.destination.index, 0, removed);
+    const sourceCol = result.source.droppableId as keyof Columns;
+    const destCol = result.destination.droppableId as keyof Columns;
 
-    setItems(reorderedItems);
+    // Si se arrastra dentro de la misma columna
+    if (sourceCol === destCol) {
+      const reorderedItems = Array.from(columns[sourceCol]);
+      const [removed] = reorderedItems.splice(result.source.index, 1);
+      reorderedItems.splice(result.destination.index, 0, removed);
+
+      setColumns((prev) => ({
+        ...prev,
+        [sourceCol]: reorderedItems,
+      }));
+    } else {
+      // Si se arrastra entre columnas
+      const sourceItems = Array.from(columns[sourceCol]);
+      const destItems = Array.from(columns[destCol]);
+      const [removed] = sourceItems.splice(result.source.index, 1);
+
+      destItems.splice(result.destination.index, 0, removed);
+
+      setColumns({
+        ...columns,
+        [sourceCol]: sourceItems,
+        [destCol]: destItems,
+      });
+    }
   };
 
   return (
     <DragDropContext onDragEnd={onDragEnd}>
-      <Droppable droppableId="droppable">
-        {(provided) => (
-          <ul
-            key={"droppable"}
-            {...provided.droppableProps}
-            ref={provided.innerRef}
-            className="space-y-2" // Espaciado entre elementos
-          >
-            {items.map((item, index) => (
-              <Draggable key={item.id} draggableId={item.id} index={index}>
-                {(provided) => (
-                  <li
-                    ref={provided.innerRef}
-                    {...provided.draggableProps}
-                    {...provided.dragHandleProps}
-                    key={item.id}
-                    className="p-4 bg-gray-200 border border-gray-400 rounded shadow hover:bg-gray-300 transition"
-                  >
-                    {item.content}
-                  </li>
-                )}
-              </Draggable>
-            ))}
-            {provided.placeholder}
-          </ul>
-        )}
-      </Droppable>
+      <div className="flex space-x-4">
+        {/* Columna 1 */}
+        <Droppable droppableId="column1">
+          {(provided) => (
+            <div
+              {...provided.droppableProps}
+              ref={provided.innerRef}
+              className="p-4 bg-blue-100 w-1/2 rounded shadow"
+            >
+              <h2 className="font-bold mb-2">Columna 1</h2>
+              {columns.column1.map((item, index) => (
+                <Draggable key={item.id} draggableId={item.id} index={index}>
+                  {(provided) => (
+                    <div
+                      ref={provided.innerRef}
+                      {...provided.draggableProps}
+                      {...provided.dragHandleProps}
+                      className="p-4 bg-gray-200 border border-gray-400 rounded mb-2"
+                    >
+                      {item.content}
+                    </div>
+                  )}
+                </Draggable>
+              ))}
+              {provided.placeholder}
+            </div>
+          )}
+        </Droppable>
+
+        {/* Columna 2 */}
+        <Droppable droppableId="column2">
+          {(provided) => (
+            <div
+              {...provided.droppableProps}
+              ref={provided.innerRef}
+              className="p-4 bg-green-100 w-1/2 rounded shadow"
+            >
+              <h2 className="font-bold mb-2">Columna 2</h2>
+              {columns.column2.map((item, index) => (
+                <Draggable key={item.id} draggableId={item.id} index={index}>
+                  {(provided) => (
+                    <div
+                      ref={provided.innerRef}
+                      {...provided.draggableProps}
+                      {...provided.dragHandleProps}
+                      className="p-4 bg-gray-200 border border-gray-400 rounded mb-2"
+                    >
+                      {item.content}
+                    </div>
+                  )}
+                </Draggable>
+              ))}
+              {provided.placeholder}
+            </div>
+          )}
+        </Droppable>
+      </div>
     </DragDropContext>
   );
 };
