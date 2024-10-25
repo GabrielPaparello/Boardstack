@@ -18,4 +18,4 @@ interface BlogType {
     updatedAt: string;
   }>;
 }
-type OptionalBlogType = Partial<BlogType>;
+// type OptionalBlogType = Partial<BlogType>;
