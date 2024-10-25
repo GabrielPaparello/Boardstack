@@ -26,6 +26,12 @@ export const Nav = () => {
         >
           LOG IN
         </Link>
+        <Link
+          className="text-light-accent-primary dark:text-dark-accent-primary"
+          href="/api/auth/logout"
+        >
+          LOG OUT
+        </Link>
       </section>
     </main>
   );
