@@ -9,7 +9,7 @@ export const Footer = () => {
           <ul key={`${key}+${Math.random()}`}>
             <h3 className="text-lg font-bold">{key}</h3>
             {value.map((item, key) => (
-              <li>
+              <li key={`${key}+${Math.random()}`}>
                 <Link href={item.link}>{item.name}</Link>
               </li>
             ))}
