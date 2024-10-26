@@ -69,7 +69,7 @@ const Software = () => {
       (col) => col.id === destination.droppableId
     );
 
-    // Si el arrastre fue en la misma columna
+    // Si el arrastre-DRAG fue en la misma columna
     if (sourceColIndex === destColIndex) {
       const reorderedTasks = Array.from(columns[sourceColIndex].tasks);
       const [removed] = reorderedTasks.splice(source.index, 1);
@@ -80,7 +80,7 @@ const Software = () => {
 
       setColumns(newColumns);
     } else {
-      // Si el arrastre fue entre columnas
+      // Si el arrastre-DRAG fue entre columnas
       const sourceTasks = Array.from(columns[sourceColIndex].tasks);
       const destTasks = Array.from(columns[destColIndex].tasks);
       const [removed] = sourceTasks.splice(source.index, 1);
