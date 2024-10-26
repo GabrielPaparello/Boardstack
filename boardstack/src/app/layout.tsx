@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { Providers } from "@/ui/components/themeProviders/Providers";
+import { UserProvider } from "@auth0/nextjs-auth0/client";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -14,9 +15,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`bg-light-primary dark:bg-dark-primary `}>
-        <Providers>{children}</Providers>
-      </body>
+      <UserProvider>
+        <body className={`bg-light-primary dark:bg-dark-primary `}>
+          <Providers>{children}</Providers>
+        </body>
+      </UserProvider>
     </html>
   );
 }
