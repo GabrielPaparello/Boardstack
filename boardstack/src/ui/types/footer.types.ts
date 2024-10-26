@@ -1,4 +1,4 @@
-interface links {
-    name: string;
-    link: string;
-  }
+// interface links {
+//     name: string;
+//     link: string;
+//   }
