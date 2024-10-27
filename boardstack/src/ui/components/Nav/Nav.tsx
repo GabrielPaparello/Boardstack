@@ -10,7 +10,7 @@ import { useUser } from "@auth0/nextjs-auth0/client";
 
 export const Nav = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const { user, error, isLoading } = useUser();
+  const { user } = useUser();
   return (
     <main className="relative md:flex md:items-center md:justify-center z-10">
       <Hamburger isOpen={isOpen} setIsOpen={setIsOpen} />
