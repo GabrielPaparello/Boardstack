@@ -1,3 +1,5 @@
+import { OptionalBlogType } from "@/ui/types/blog.types";
+
 export const blogData: OptionalBlogType = {
   featured: {
     id: "1",
