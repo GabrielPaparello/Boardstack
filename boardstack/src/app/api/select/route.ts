@@ -1,7 +1,7 @@
 import { db } from "@/lib/db/orm/db";
-import { NextRequest, NextResponse } from "next/server";
+import { NextResponse } from "next/server";
 
-export async function GET(req: NextRequest) {
+export async function GET() {
   if (!db) {
     return NextResponse.json(
       { error: "Database not available on client side" },

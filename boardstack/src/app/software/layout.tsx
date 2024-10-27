@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import "../globals.css";
 import { Providers } from "@/ui/components/themeProviders/Providers";
 import { Nav } from "@/ui/components/Nav/Nav";
-import { usuarios } from "@/lib/db/select";
 
 export const metadata: Metadata = {
   title: "software",
