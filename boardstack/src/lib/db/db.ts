@@ -1,6 +1,6 @@
 import { Kysely, PostgresDialect } from "kysely";
 import { Pool } from "pg";
-import { Database } from "./schema/schema";
+import { Database } from "./schema";
 
 const connectionString = process.env.POSTGRES_URL;
 
