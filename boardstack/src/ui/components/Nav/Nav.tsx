@@ -6,10 +6,11 @@ import { Mobile } from "./mobile";
 import { Desktop } from "./desktop";
 import { urbanist } from "../common/fonts";
 import Link from "next/link";
+import { useUser } from "@auth0/nextjs-auth0/client";
 
 export const Nav = () => {
   const [isOpen, setIsOpen] = useState(false);
-
+  const { user, error, isLoading } = useUser();
   return (
     <main className="relative md:flex md:items-center md:justify-center z-10">
       <Hamburger isOpen={isOpen} setIsOpen={setIsOpen} />
@@ -26,12 +27,14 @@ export const Nav = () => {
         >
           LOG IN
         </Link>
-        <Link
-          className="text-light-accent-primary dark:text-dark-accent-primary"
-          href="/api/auth/logout"
-        >
-          LOG OUT
-        </Link>
+        {user && (
+          <Link
+            className="text-light-accent-primary dark:text-dark-accent-primary"
+            href="/api/auth/logout"
+          >
+            LOG OUT
+          </Link>
+        )}
       </section>
     </main>
   );
