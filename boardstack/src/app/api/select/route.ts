@@ -4,7 +4,7 @@ import { NextResponse } from "next/server";
 export async function GET() {
   if (!db) {
     return NextResponse.json(
-      { error: "Database not available on client side" },
+      { error: "Database not available " },
       { status: 500 }
     );
   }
