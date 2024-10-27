@@ -20,13 +20,14 @@ export const Nav = () => {
         className={`fixed top-2 md:top-5 ${urbanist.className} font-bold px-5 right-0  items-center justify-center flex gap-5 `}
       >
         <ThemeSwitch />
-
-        <Link
-          className="text-light-accent-primary dark:text-dark-accent-primary"
-          href="/api/auth/login"
-        >
-          LOG IN
-        </Link>
+        {user === undefined && (
+          <Link
+            className="text-light-accent-primary dark:text-dark-accent-primary"
+            href="/api/auth/login"
+          >
+            LOG IN
+          </Link>
+        )}
         {user && (
           <Link
             className="text-light-accent-primary dark:text-dark-accent-primary"
