@@ -5,7 +5,6 @@ import { useState } from "react";
 import { Mobile } from "./mobile";
 import { Desktop } from "./desktop";
 import { urbanist } from "../common/fonts";
-import Link from "next/link";
 import { useUser } from "@auth0/nextjs-auth0/client";
 
 export const Nav = () => {
@@ -21,20 +20,20 @@ export const Nav = () => {
       >
         <ThemeSwitch />
         {user === undefined && (
-          <Link
+          <a
             className="text-light-accent-primary dark:text-dark-accent-primary"
             href="/api/auth/login"
           >
             LOG IN
-          </Link>
+          </a>
         )}
         {user && (
-          <Link
+          <a
             className="text-light-accent-primary dark:text-dark-accent-primary"
             href="/api/auth/logout"
           >
             LOG OUT
-          </Link>
+          </a>
         )}
       </section>
     </main>
