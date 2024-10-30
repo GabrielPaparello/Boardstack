@@ -1,3 +1,5 @@
+import { links } from "@/ui/types/footer.types";
+
 export const data: links[] = [
   {
     name: "HOME",

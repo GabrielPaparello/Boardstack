@@ -1,4 +1,4 @@
-interface BlogType {
+export interface BlogType {
   featured: {
     id: string;
     title: string;
@@ -18,4 +18,4 @@ interface BlogType {
     updatedAt: string;
   }>;
 }
-// type OptionalBlogType = Partial<BlogType>;
+export type OptionalBlogType = Partial<BlogType>;
