@@ -3,7 +3,7 @@ import { useUser } from "@auth0/nextjs-auth0/client";
 import React, { useEffect } from "react";
 
 const Project = () => {
-  const { user, isLoading, error } = useUser();
+  const { user } = useUser();
   const user_id = user?.sub?.split("|")[1];
 
   useEffect(() => {}, []);

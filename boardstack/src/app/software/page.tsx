@@ -13,7 +13,6 @@ const Software = () => {
   const [value, setValue] = useState({ id: "", title: "" });
   const [columns, setColumns] = useState<Column[]>([]);
   const [taskInputs, setTaskInputs] = useState<{ [key: string]: string }>({});
-  const { user, isLoading, error } = useUser();
 
   interface Column {
     id: string;
