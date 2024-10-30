@@ -2,12 +2,19 @@ import { db } from "@/lib/db/db";
 import { Projects } from "@/lib/services/project.services";
 import { NextResponse } from "next/server";
 
-export async function GET(userId: number) {
+export async function GET(request: Request) {
+  const { searchParams } = new URL(request.url);
+  const userId = parseInt(searchParams.get("userId") || "", 10);
+
   if (!db) {
     return NextResponse.json(
-      { error: "Database not available " },
+      { error: "Database not available" },
       { status: 500 }
     );
+  }
+
+  if (isNaN(userId)) {
+    return NextResponse.json({ error: "Invalid userId" }, { status: 400 });
   }
 
   try {
