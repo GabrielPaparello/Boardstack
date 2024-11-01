@@ -64,12 +64,7 @@ const Project = () => {
   // POST A LA DB DE LOS proyectos
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    let data = {
-      user_id: userIdent,
-      name: nombre,
-      description: descripcion,
-      created_at: new Date(),
-    };
+
     try {
       setLoading(true);
       const response = await fetch(DbConnection.insertProject(), {
@@ -77,7 +72,12 @@ const Project = () => {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(data),
+        body: JSON.stringify({
+          user_id: userIdent,
+          name: nombre,
+          description: descripcion,
+          created_at: new Date(),
+        }), // Aquí se elimina la variable `data`
       });
 
       if (!response.ok) {
@@ -85,12 +85,13 @@ const Project = () => {
       }
 
       const result = await response.json();
-      console.log("Proyecto insertado:", result);
+      console.log("Proyecto insertado:", result); // Puedes usar el resultado aquí si lo deseas
     } catch (error) {
       console.error("Error al hacer la solicitud:", error);
     } finally {
       setLoading(false);
     }
+
     (event.target as HTMLFormElement).reset();
   };
 
