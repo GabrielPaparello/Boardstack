@@ -11,6 +11,7 @@ export class Projects {
         .execute();
       return { projectData, status: 200 };
     } catch (error) {
+      console.error(error);
       return { error: "Internal Server Error", status: 500 };
     }
   }
@@ -34,6 +35,7 @@ export class Projects {
         .execute();
       return { data: data, status: 200 };
     } catch (error) {
+      console.error(error);
       return { error: "Internal Server Error", status: 500 };
     }
   }
@@ -47,7 +49,11 @@ export class Projects {
         .execute();
       return { data: data, status: 200 };
     } catch (error) {
-      return NextResponse.json({ error: error }, { status: 500 });
+      console.error(error);
+      return NextResponse.json(
+        { error: "Internal Server Error" },
+        { status: 500 }
+      );
     }
   }
 }
