@@ -2,18 +2,16 @@
 
 "use client";
 
-import { UserProvider } from "@/lib/context/UserContext";
 import { ThemeProvider } from "next-themes";
 
 interface ProvidersProps {
-  userIdent?: number | null;
   children: React.ReactNode;
 }
 
-export function Providers({ userIdent, children }: ProvidersProps) {
+export function Providers({ children }: ProvidersProps) {
   return (
     <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-      <UserProvider value={{ userIdent }}>{children}</UserProvider>
+      {children}
     </ThemeProvider>
   );
 }

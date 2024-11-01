@@ -2,9 +2,9 @@
 import { DbConnection } from "@/lib/services/url.db.services";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
-import { useUserContext } from "@/lib/context/UserContext";
 import DeleteIcon from "@/ui/components/common/icons/Delete";
-const Project = () => {
+import { useUser } from "@auth0/nextjs-auth0/client";
+const Project = async () => {
   interface Project {
     id: number;
     user_id: number | null;
@@ -12,13 +12,30 @@ const Project = () => {
     description: string | null;
     created_at: Date;
   }
+  const { user } = useUser();
+  const userId = user?.sub;
+
+  const fetchUser = async () => {
+    if (!userId) return null; // Maneja el caso donde userId no está disponible
+    try {
+      const response = await fetch(DbConnection.getUserUrl(userId));
+      if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
+      }
+      const data = await response.json();
+      return data[0]?.id || null;
+    } catch (error) {
+      console.error("Error al hacer la solicitud:", error);
+      return null;
+    }
+  };
+
+  const userIdent = await fetchUser();
 
   const [nombre, setNombre] = useState("");
   const [descripcion, setDescripcion] = useState("");
   const [projects, setProjects] = useState<Project[]>([]);
   const [loading, setLoading] = useState(false);
-
-  const { userIdent } = useUserContext();
 
   // GET A LA DB DE LOS proyectos
   const fetchProjects = async () => {

@@ -15,30 +15,10 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const { user } = useUser();
-  const userId = user?.sub;
-
-  const fetchUser = async () => {
-    if (!userId) return null; // Maneja el caso donde userId no está disponible
-    try {
-      const response = await fetch(DbConnection.getUserUrl(userId));
-      if (!response.ok) {
-        throw new Error(`HTTP error! Status: ${response.status}`);
-      }
-      const data = await response.json();
-      return data[0]?.id || null;
-    } catch (error) {
-      console.error("Error al hacer la solicitud:", error);
-      return null;
-    }
-  };
-
-  const userIdent = await fetchUser();
-
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={`bg-light-primary dark:bg-dark-primary `}>
-        <Providers userIdent={userIdent}>
+        <Providers>
           <Nav />
           {children}
         </Providers>
