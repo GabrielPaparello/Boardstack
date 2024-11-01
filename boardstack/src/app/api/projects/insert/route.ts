@@ -2,14 +2,14 @@ import { Projects } from "@/lib/services/project.services";
 import { NextResponse } from "next/server";
 
 export async function POST(request: Request) {
-  const { userId, name, description, date } = await request.json();
+  const { user_id, name, description, created_at } = await request.json();
 
   try {
     const data = await Projects.insert(
-      userId,
+      user_id,
       name,
       description,
-      new Date(date)
+      new Date(created_at)
     );
     return NextResponse.json(data, { status: 200 });
   } catch (error) {

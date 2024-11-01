@@ -1,11 +1,19 @@
+// app/ui/components/themeProviders/Providers.tsx
+
 "use client";
 
+import { UserProvider } from "@/lib/context/UserContext";
 import { ThemeProvider } from "next-themes";
 
-export function Providers({ children }: { children: React.ReactNode }) {
+interface ProvidersProps {
+  userIdent: number | null;
+  children: React.ReactNode;
+}
+
+export function Providers({ userIdent, children }: ProvidersProps) {
   return (
     <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-      {children}
+      <UserProvider value={{ userIdent }}>{children}</UserProvider>
     </ThemeProvider>
   );
 }
