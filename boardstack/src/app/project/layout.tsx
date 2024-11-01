@@ -19,6 +19,7 @@ export default async function RootLayout({
   const userId = user?.sub;
 
   const fetchUser = async () => {
+    if (!userId) return null; // Maneja el caso donde userId no está disponible
     try {
       const response = await fetch(DbConnection.getUserUrl(userId));
       if (!response.ok) {
@@ -36,7 +37,7 @@ export default async function RootLayout({
 
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`bg-light-primary dark:bg-dark-primary`}>
+      <body className={`bg-light-primary dark:bg-dark-primary `}>
         <Providers userIdent={userIdent}>
           <Nav />
           {children}
