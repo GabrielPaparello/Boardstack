@@ -1,8 +1,12 @@
 import React, { createContext, useContext, ReactNode } from "react";
 
-interface UserContextType {
-  userIdent: number | null;
+// UserContext.tsx (ejemplo)
+
+export interface UserContextType {
+  userIdent: number | null | undefined; // Permitir undefined
 }
+
+// Y luego ajustar tu UserProvider para que acepte ese tipo
 
 const UserContext = createContext<UserContextType | undefined>(undefined);
 

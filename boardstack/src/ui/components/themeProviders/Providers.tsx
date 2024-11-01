@@ -6,7 +6,7 @@ import { UserProvider } from "@/lib/context/UserContext";
 import { ThemeProvider } from "next-themes";
 
 interface ProvidersProps {
-  userIdent: number | null;
+  userIdent?: number | null;
   children: React.ReactNode;
 }
 

@@ -22,6 +22,9 @@ const Project = () => {
 
   // GET A LA DB DE LOS proyectos
   const fetchProjects = async () => {
+    if (!userIdent) {
+      return;
+    }
     setLoading(true);
     try {
       const response = await fetch(DbConnection.getProject(userIdent));
