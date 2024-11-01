@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import "../globals.css";
 import { Providers } from "@/ui/components/themeProviders/Providers";
 import { Nav } from "@/ui/components/Nav/Nav";
-import { UserProvider } from "@/lib/context/UserContext";
+import ClientWrapper from "@/lib/context/ClientWrapper";
 
 export const metadata: Metadata = {
   title: "software",
@@ -17,12 +17,12 @@ export default async function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={`bg-light-primary dark:bg-dark-primary `}>
-        <UserProvider>
+        <ClientWrapper>
           <Providers>
             <Nav />
             {children}
           </Providers>
-        </UserProvider>
+        </ClientWrapper>
       </body>
     </html>
   );
