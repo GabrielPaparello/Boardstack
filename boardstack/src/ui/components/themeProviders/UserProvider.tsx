@@ -1,14 +1,26 @@
-// app/ui/components/themeProviders/Providers.tsx
+// src/lib/context/UserContext.tsx
+import React, { createContext, useContext, ReactNode, useState } from "react";
 
-"use client";
-
-import { UserProvider } from "@/lib/context/UserContext";
-
-interface ProvidersProps {
-  userIdent?: number | null;
-  children: React.ReactNode;
+interface UserContextType {
+  userIdent: number | null | undefined;
 }
 
-export function Providers({ userIdent, children }: ProvidersProps) {
-  return <UserProvider value={{ userIdent }}>{children}</UserProvider>;
-}
+const UserContext = createContext<UserContextType | undefined>(undefined);
+
+export const UserProvider = ({
+  value,
+  children,
+}: {
+  value: UserContextType;
+  children: ReactNode;
+}) => {
+  return <UserContext.Provider value={value}>{children}</UserContext.Provider>;
+};
+
+export const useUserContext = () => {
+  const context = useContext(UserContext);
+  if (context === undefined) {
+    throw new Error("useUserContext must be used within a UserProvider");
+  }
+  return context;
+};
