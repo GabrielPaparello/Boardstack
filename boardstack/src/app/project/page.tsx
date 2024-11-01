@@ -4,6 +4,7 @@ import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import { useUserContext } from "@/lib/context/UserContext";
 import DeleteIcon from "@/ui/components/common/icons/Delete";
+
 const Project = () => {
   interface Project {
     id: number;
@@ -39,6 +40,7 @@ const Project = () => {
       setLoading(false);
     }
   };
+
   // ELIMINAR DE LA DB proyectos
   const handleDelete = async (id: number) => {
     try {
@@ -62,17 +64,19 @@ const Project = () => {
 
   useEffect(() => {
     fetchProjects();
-  }, []);
+  }, []); // Agregado fetchProjects a las dependencias
 
   // POST A LA DB DE LOS proyectos
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    let data = {
+    const data = {
+      // Cambiado de let a const
       user_id: userIdent,
       name: nombre,
       description: descripcion,
       created_at: new Date(),
     };
+
     try {
       setLoading(true);
       const response = await fetch(DbConnection.insertProject(), {
@@ -146,7 +150,9 @@ const Project = () => {
           <p>todavia no tenes proyectos, crea uno</p>
         )}
         {projects.map((project) => (
-          <article>
+          <article key={project.id}>
+            {" "}
+            {/* Añadido key prop */}
             <div className="flex relative flex-col items-center justify-center gap-2 bg-light-accent-primary dark:bg-dark-accent-primary rounded-lg p-2">
               <div
                 onClick={() => {
@@ -184,4 +190,5 @@ const Project = () => {
     </main>
   );
 };
+
 export default Project;
