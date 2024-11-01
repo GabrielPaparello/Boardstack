@@ -2,8 +2,6 @@ import type { Metadata } from "next";
 import "../globals.css";
 import { Providers } from "@/ui/components/themeProviders/Providers";
 import { Nav } from "@/ui/components/Nav/Nav";
-import { DbConnection } from "@/lib/services/url.db.services";
-import { useUser } from "@auth0/nextjs-auth0/client";
 
 export const metadata: Metadata = {
   title: "software",
