@@ -1,7 +1,5 @@
 "use client";
 import { DbConnection } from "@/lib/services/url.db.services";
-import { UserService } from "@/lib/services/user.service";
-import { useUser } from "@auth0/nextjs-auth0/client";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import { useUserContext } from "@/lib/context/UserContext";
@@ -13,13 +11,6 @@ const Project = () => {
     name: string;
     description: string | null;
     created_at: Date;
-  }
-  interface Error {
-    error: string;
-    status: number;
-  }
-  interface Data {
-    id: number;
   }
 
   const [nombre, setNombre] = useState("");
@@ -152,11 +143,8 @@ const Project = () => {
           <p>todavia no tenes proyectos, crea uno</p>
         )}
         {projects.map((project) => (
-          <article>
-            <div
-              className="flex relative flex-col items-center justify-center gap-2 bg-light-accent-primary dark:bg-dark-accent-primary rounded-lg p-2"
-              key={project.id}
-            >
+          <article key={project.id}>
+            <div className="flex relative flex-col items-center justify-center gap-2 bg-light-accent-primary dark:bg-dark-accent-primary rounded-lg p-2">
               <div
                 onClick={() => {
                   handleDelete(project.id);
