@@ -11,7 +11,7 @@ export class DbConnection {
   }
   // CAMBIAR URL A VARIABLE DE ENTORNO
   static getUserUrl(userId: string | undefined | null) {
-    const url = `http://localhost:3000/api/users/get?userId=${userId}`;
+    const url = `/api/users/get?userId=${userId}`;
     return url;
   }
 

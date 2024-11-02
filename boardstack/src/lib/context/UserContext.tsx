@@ -36,7 +36,7 @@ export const UserProvider: React.FC<{ children: React.ReactNode }> = ({
           }),
         });
         if (!response.ok) {
-          throw new Error(`HTTP error! Status: ${response.status}`);
+          throw new Error(`HTTP error! Status: ${response.status} `);
         }
       } catch (error) {
         console.error("Error al hacer la solicitud:", error);
