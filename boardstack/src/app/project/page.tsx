@@ -63,10 +63,6 @@ const Project = () => {
     }
   };
 
-  useEffect(() => {
-    fetchProjects();
-  }, [userIdent, projects]); // Agregado fetchProjects a las dependencias
-
   // POST A LA DB DE LOS proyectos
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -101,6 +97,10 @@ const Project = () => {
     }
     (event.target as HTMLFormElement).reset();
   };
+
+  useEffect(() => {
+    fetchProjects();
+  }, [userIdent, handleDelete, handleSubmit]); // Agregado fetchProjects a las dependencias
 
   return (
     <main className="flex text-lg text-black font-bold flex-col items-center gap-10 mt-10">
