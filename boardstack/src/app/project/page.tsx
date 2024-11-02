@@ -65,7 +65,7 @@ const Project = () => {
 
   useEffect(() => {
     fetchProjects();
-  }, [userIdent]); // Agregado fetchProjects a las dependencias
+  }, [userIdent, projects]); // Agregado fetchProjects a las dependencias
 
   // POST A LA DB DE LOS proyectos
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
@@ -105,7 +105,7 @@ const Project = () => {
   return (
     <main className="flex text-lg text-black font-bold flex-col items-center gap-10 mt-10">
       <section className="flex flex-col items-center">
-        <h3>Seccion Proyectos{userIdent}</h3>
+        <h3>Seccion Proyectos</h3>
         <p>Crea un nuevo proyecto</p>
       </section>
       <form
