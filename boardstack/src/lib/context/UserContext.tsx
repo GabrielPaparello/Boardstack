@@ -13,7 +13,7 @@ export const UserProvider: React.FC<{ children: React.ReactNode }> = ({
   children,
 }) => {
   const { user } = useUser();
-  const userId = user?.sub;
+  const userId = user?.sub?.split("|")[1];
 
   const [userIdent, setUserIdent] = useState<number | null | undefined>(null);
 
