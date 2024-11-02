@@ -4,14 +4,15 @@ import { NextResponse } from "next/server";
 export class Projects {
   static async getAll(userId: number) {
     try {
-      const data = await db
-        .selectFrom("proyectos")
+      const projectData = await db
+        .selectFrom("projects")
         .selectAll()
-        .where("proyectos.usuario_id", "=", userId)
+        .where("projects.user_id", "=", userId)
         .execute();
-      return NextResponse.json(data, { status: 200 });
+      return { projectData, status: 200 };
     } catch (error) {
-      return NextResponse.json({ error: error }, { status: 500 });
+      console.error(error);
+      return { error: "Internal Server Error", status: 500 };
     }
   }
 
@@ -23,32 +24,36 @@ export class Projects {
   ) {
     try {
       const data = await db
-        .insertInto("proyectos")
+        .insertInto("projects")
         .values({
-          id: Math.floor(Math.random() * 1000),
-          usuario_id: userId,
-          nombre: name,
-          descripcion: description,
-          fecha_creacion: date,
+          user_id: userId,
+          name: name,
+          description: description,
+          created_at: date,
         })
         .returningAll()
         .execute();
-      return NextResponse.json(data, { status: 200 });
+      return { data: data, status: 200 };
     } catch (error) {
-      return NextResponse.json({ error: error }, { status: 500 });
+      console.error(error);
+      return { error: "Internal Server Error", status: 500 };
     }
   }
 
   static async delete(id: number) {
     try {
       const data = await db
-        .deleteFrom("proyectos")
-        .where("proyectos.id", "=", id)
+        .deleteFrom("projects")
+        .where("projects.id", "=", id)
         .returningAll()
         .execute();
-      return NextResponse.json(data, { status: 200 });
+      return { data: data, status: 200 };
     } catch (error) {
-      return NextResponse.json({ error: error }, { status: 500 });
+      console.error(error);
+      return NextResponse.json(
+        { error: "Internal Server Error" },
+        { status: 500 }
+      );
     }
   }
 }

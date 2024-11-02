@@ -19,7 +19,15 @@ export async function GET(request: Request) {
 
   try {
     const proyectos = await Projects.getAll(userId);
-    return NextResponse.json(proyectos, { status: 200 });
+
+    if (!proyectos.projectData || proyectos.projectData.length === 0) {
+      return NextResponse.json(
+        { message: "No hay proyectos disponibles." },
+        { status: 404 }
+      );
+    }
+
+    return NextResponse.json(proyectos.projectData, { status: 200 });
   } catch (error) {
     return NextResponse.json({ error: error }, { status: 500 });
   }
