@@ -2,10 +2,18 @@
 import { DbConnection } from "@/lib/services/url.db.services";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
-import { useUserContext } from "@/lib/context/UserContext";
 import DeleteIcon from "@/ui/components/common/icons/Delete";
 
-const Project = () => {
+export const ProjectUi = ({
+  userIdent,
+}: {
+  userIdent: number | null | undefined;
+}) => {
+  const [nombre, setNombre] = useState("");
+  const [descripcion, setDescripcion] = useState("");
+  const [projects, setProjects] = useState<Project[]>([]);
+  const [loading, setLoading] = useState(false);
+
   interface Project {
     id: number;
     user_id: number | null;
@@ -13,13 +21,6 @@ const Project = () => {
     description: string | null;
     created_at: Date;
   }
-
-  const [nombre, setNombre] = useState("");
-  const [descripcion, setDescripcion] = useState("");
-  const [projects, setProjects] = useState<Project[]>([]);
-  const [loading, setLoading] = useState(false);
-
-  const { userIdent } = useUserContext();
 
   // GET A LA DB DE LOS proyectos
   const fetchProjects = async () => {
@@ -64,18 +65,11 @@ const Project = () => {
 
   useEffect(() => {
     fetchProjects();
-  }, []); // Agregado fetchProjects a las dependencias
+  }, []);
 
   // POST A LA DB DE LOS proyectos
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    const data = {
-      // Cambiado de let a const
-      user_id: userIdent,
-      name: nombre,
-      description: descripcion,
-      created_at: new Date(),
-    };
 
     try {
       setLoading(true);
@@ -84,7 +78,12 @@ const Project = () => {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(data),
+        body: JSON.stringify({
+          user_id: userIdent,
+          name: nombre,
+          description: descripcion,
+          created_at: new Date(),
+        }), // Aquí se elimina la variable `data`
       });
 
       if (!response.ok) {
@@ -92,19 +91,20 @@ const Project = () => {
       }
 
       const result = await response.json();
-      console.log("Proyecto insertado:", result);
+      console.log("Proyecto insertado:", result); // Puedes usar el resultado aquí si lo deseas
     } catch (error) {
       console.error("Error al hacer la solicitud:", error);
     } finally {
       setLoading(false);
     }
+
     (event.target as HTMLFormElement).reset();
   };
 
   return (
     <main className="flex text-lg text-black font-bold flex-col items-center gap-10 mt-10">
       <section className="flex flex-col items-center">
-        <h3>Seccion Proyectos</h3>
+        <h3>Proyectos</h3>
         <p>Crea un nuevo proyecto</p>
       </section>
       <form
@@ -151,8 +151,6 @@ const Project = () => {
         )}
         {projects.map((project) => (
           <article key={project.id}>
-            {" "}
-            {/* Añadido key prop */}
             <div className="flex relative flex-col items-center justify-center gap-2 bg-light-accent-primary dark:bg-dark-accent-primary rounded-lg p-2">
               <div
                 onClick={() => {
@@ -190,5 +188,3 @@ const Project = () => {
     </main>
   );
 };
-
-export default Project;

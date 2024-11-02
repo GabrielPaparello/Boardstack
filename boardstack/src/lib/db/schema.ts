@@ -1,36 +1,37 @@
 // schema.ts
 
 export interface Database {
-  usuarios: {
+  users: {
     id: number;
     auth0_id: string;
-    nombre: string | null;
+    name: string | null;
     email: string;
+    created_at: Date;
   };
-  amistades: {
-    usuario_id: number;
-    amigo_id: number;
+  friendships: {
+    user_id: number;
+    friend_id: number;
   };
-  proyectos: {
+  projects: {
+    id?: number;
+    user_id: number;
+    name: string;
+    description: string | null;
+    created_at: Date;
+  };
+  columns: {
     id: number;
-    usuario_id: number;
-    nombre: string;
-    descripcion: string | null;
-    fecha_creacion: Date;
+    project_id: number;
+    title: string;
+    order_num: number;
   };
-  columnas: {
+  tasks: {
     id: number;
-    proyecto_id: number;
-    titulo: string;
-    orden: number;
-  };
-  tareas: {
-    id: number;
-    columna_id: number;
-    titulo: string;
-    descripcion: string | null;
-    orden: number;
-    fecha_creacion: Date;
-    fecha_vencimiento: Date | null;
+    column_id: number;
+    title: string;
+    description: string | null;
+    order_num: number;
+    created_at: Date;
+    due_date: Date | null;
   };
 }
