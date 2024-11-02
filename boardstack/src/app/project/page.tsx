@@ -23,10 +23,11 @@ const Project = () => {
 
   // GET A LA DB DE LOS proyectos
   const fetchProjects = async () => {
-    if (userIdent === null && userIdent === undefined) {
+    if (!userIdent) {
       console.error("No hay identificador de usuario");
       return;
     }
+
     setLoading(true);
     try {
       const response = await fetch(DbConnection.getProject(userIdent));
@@ -90,6 +91,7 @@ const Project = () => {
 
       const result = await response.json();
       console.log("Proyecto insertado:", result);
+      await fetchProjects();
     } catch (error) {
       console.error("Error al hacer la solicitud:", error);
     } finally {
@@ -100,7 +102,7 @@ const Project = () => {
 
   useEffect(() => {
     fetchProjects();
-  }, [userIdent, handleDelete, handleSubmit]); // Agregado fetchProjects a las dependencias
+  }, [userIdent]); // Agregado fetchProjects a las dependencias
 
   return (
     <main className="flex text-lg text-black font-bold flex-col items-center gap-10 mt-10">
