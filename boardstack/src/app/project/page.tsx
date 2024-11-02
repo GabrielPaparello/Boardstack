@@ -104,7 +104,7 @@ const Project = () => {
   return (
     <main className="flex text-lg text-black font-bold flex-col items-center gap-10 mt-10">
       <section className="flex flex-col items-center">
-        <h3>Proyectos</h3>
+        <h3>Seccion Proyectos</h3>
         <p>Crea un nuevo proyecto</p>
       </section>
       <form
