@@ -13,6 +13,15 @@ export class UserService {
     if (!userId || !name) {
       return { error: "Missing required fields", status: 400 };
     }
+    const existingUser = await db
+      .selectFrom("users")
+      .selectAll()
+      .where("users.auth0_id", "=", userId)
+      .execute();
+    if (existingUser.length > 0) {
+      return { error: "User already exists", status: 409 };
+    }
+
     try {
       const userData = await db
         .insertInto("users")
