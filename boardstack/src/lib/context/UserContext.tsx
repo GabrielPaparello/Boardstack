@@ -19,7 +19,7 @@ export const UserProvider: React.FC<{ children: React.ReactNode }> = ({
 
   useEffect(() => {
     const InsertUser = async () => {
-      if (!userId) {
+      if (!userId || userIdent) {
         return;
       }
       try {
