@@ -1,5 +1,5 @@
 // src/lib/context/UserContext.tsx
-import React, { createContext, useContext, ReactNode, useState } from "react";
+import React, { createContext, useContext, ReactNode } from "react";
 
 interface UserContextType {
   userIdent: number | null | undefined;
