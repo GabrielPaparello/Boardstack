@@ -2,7 +2,7 @@
 
 export interface Database {
   users: {
-    id: number;
+    id?: number;
     auth0_id: string;
     name: string | null;
     email: string;
