@@ -1,5 +1,5 @@
 export class DbConnection {
-  static getProject(userId: number | null) {
+  static getProject(userId: number | undefined | null) {
     const url = `/api/projects/get?userId=${userId}`;
     return url;
   }
