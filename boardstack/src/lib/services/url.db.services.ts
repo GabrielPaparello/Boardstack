@@ -14,4 +14,8 @@ export class DbConnection {
     const url = `http://localhost:3000/api/users/get?userId=${userId}`;
     return url;
   }
+
+  static insertUser() {
+    return "/api/users/insert";
+  }
 }

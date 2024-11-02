@@ -3,6 +3,34 @@
 import { db } from "@/lib/db/db"; // Ensure this path is correct
 
 export class UserService {
+  // Method to insert a new user
+  static async insertUser(
+    userId: string,
+    email: string,
+    name: string,
+    created_at: Date
+  ) {
+    if (!userId || !name) {
+      return { error: "Missing required fields", status: 400 };
+    }
+    try {
+      const userData = await db
+        .insertInto("users")
+        .values({
+          auth0_id: userId,
+          email: email,
+          name: name,
+          created_at: created_at,
+        })
+        .returningAll()
+        .execute();
+
+      return { data: userData, status: 201 };
+    } catch (error) {
+      console.error("Error in insertUser:", error);
+      return { error: "Internal Server Error", status: 500 };
+    }
+  }
   // Method to get a user by their Auth0 ID
   static async getUser(id: string) {
     try {
