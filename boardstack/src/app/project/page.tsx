@@ -23,6 +23,10 @@ const Project = () => {
 
   // GET A LA DB DE LOS proyectos
   const fetchProjects = async () => {
+    if (userIdent === null && userIdent === undefined) {
+      console.error("No hay identificador de usuario");
+      return;
+    }
     setLoading(true);
     try {
       const response = await fetch(DbConnection.getProject(userIdent));
@@ -61,7 +65,7 @@ const Project = () => {
 
   useEffect(() => {
     fetchProjects();
-  }, []); // Agregado fetchProjects a las dependencias
+  }, [userIdent]); // Agregado fetchProjects a las dependencias
 
   // POST A LA DB DE LOS proyectos
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
