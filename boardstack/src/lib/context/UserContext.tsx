@@ -18,23 +18,49 @@ export const UserProvider: React.FC<{ children: React.ReactNode }> = ({
   const [userIdent, setUserIdent] = useState<number | null | undefined>(null);
 
   useEffect(() => {
-    const fetchUser = async () => {
+    const InsertUser = async () => {
       if (!userId) {
-        setUserIdent(null);
         return;
       }
       try {
-        const response = await fetch(DbConnection.getUserUrl(userId));
+        const response = await fetch(DbConnection.insertUser(), {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            userId: userId,
+            name: user?.name,
+            email: user?.email,
+            created_at: new Date(),
+          }),
+        });
         if (!response.ok) {
           throw new Error(`HTTP error! Status: ${response.status}`);
         }
-        const data = await response.json();
-        setUserIdent(data[0]?.id || null);
       } catch (error) {
         console.error("Error al hacer la solicitud:", error);
       }
     };
-
+    const fetchUser = async () => {
+      await InsertUser();
+      {
+        if (!userId) {
+          setUserIdent(null);
+          return;
+        }
+        try {
+          const response = await fetch(DbConnection.getUserUrl(userId));
+          if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${response.status}`);
+          }
+          const data = await response.json();
+          setUserIdent(data[0]?.id || null);
+        } catch (error) {
+          console.error("Error al hacer la solicitud:", error);
+        }
+      }
+    };
     fetchUser();
   }, [userId]);
 
